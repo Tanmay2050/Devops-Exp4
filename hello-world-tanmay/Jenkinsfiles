@@ -2,16 +2,15 @@ pipeline {
     agent any
 
     tools {
-    maven 'maven'
-    jdk 'jdk21'
-}
-
+        maven 'maven'
+        jdk 'jdk21'
+    }
 
     stages {
+
         stage('Checkout Code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Tanmay2050/Devops-Exp4.git'
-                 
             }
         }
 
@@ -20,6 +19,7 @@ pipeline {
                 dir('hello-world-tanmay') {
                     bat 'mvn clean package'
                 }
+            }
         }
 
         stage('Deploy to Tomcat') {
@@ -32,7 +32,7 @@ pipeline {
                     )
                 ],
                 contextPath: 'hello-world-tanmay',
-                war: 'target/hello-world-tanmay.war'
+                war: 'hello-world-tanmay/target/hello-world-tanmay.war'
             }
         }
     }
