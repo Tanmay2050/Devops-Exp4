@@ -16,9 +16,7 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                dir('hello-world-tanmay') {
-                    bat 'mvn clean package'
-                }
+                    bat 'cd hello-world-tanmay && mvn clean package'
             }
         }
 
