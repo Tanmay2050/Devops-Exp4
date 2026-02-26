@@ -17,8 +17,9 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                bat 'mvn clean package'
-            }
+                dir('hello-world-tanmay') {
+                    bat 'mvn clean package'
+                }
         }
 
         stage('Deploy to Tomcat') {
